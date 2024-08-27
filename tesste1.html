@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+
+    <style>
+        .request{
+            position: absolute;
+            top: 100px;
+            display: flex;
+            flex-direction: column-reverse;
+            background: linear-gradient(to left, rgb(0, 0, 0) 50%, rgb(255, 255, 255) 90%);
+            border-radius: 11px;
+            padding: 55px;
+            left: 70vh;
+            width: 40vh;
+            height: 50vh;
+            box-shadow: 15px 15px 45px rgb(0, 0, 0);
+            gap: 5px
+        }
+        
+    </style>
+</head>
+<body>
+    
+
+
+    <form class="request" action="">
+        <input id="nome" type="text"></input>
+        <label for="nome">nome:</label>
+
+        <input id="email" type="email"></input>
+        <label for="email">email</label>
+
+        <input id="senha" type="password"></input>
+        <label for="senha">senha</label>
+
+        <button id="botao" onclick="validarFormulario()">go!!</button>
+    </form>
+
+
+
+
+
+<script>
+          function validarFormulario() {
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var senha = document.getElementById("senha").value;
+            var erro = "";
+
+            if (nome === "") {
+                erro += "O nome é obrigatório.\n";
+            }
+            if (email === "") {
+                erro += "O email é obrigatório.\n";
+            } else {
+                var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!regexEmail.test(email)) {
+                    erro += "O email é inválido.\n";
+                }
+            }
+            if (senha === "") {
+                erro += "A senha é obrigatória.\n";
+            } else if (senha.length < 6) {
+                erro += "A senha deve ter pelo menos 6 caracteres.\n";
+            }
+
+            if (erro) {
+                alert(erro);
+                return false;
+            }
+            return true;
+        }
+</script>
+
+</body>
+</html>
